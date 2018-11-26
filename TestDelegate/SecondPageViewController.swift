@@ -6,4 +6,18 @@
 //  Copyright © 2018 Patato. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class SecondPage: UIViewController{
+    
+    
+    var delegate: SecondPageDelegate! // delegate
+    var testDataTV: UITableView!
+    var dataList: [String] = ["Apple", "Banana", "Cherry"]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationItem.title = "Second Page"
+    }
+    
+}
