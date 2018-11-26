@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstPageViewController: UIViewController  {
+class FirstPageViewController: UIViewController, SecondPageDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +30,21 @@ class FirstPageViewController: UIViewController  {
     
     //切換頁
     @objc func onClickToSecondPage(_ sender: UIButton) {
+        let secondPage: SecondPage = SecondPage()
+        secondPage.delegate = self
+        self.navigationController?.pushViewController(secondPage, animated: true)
+    }
+    
+    func alertMsg(errMsg: String){
+        let alertController = UIAlertController(title: "已選擇", message: errMsg, preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(confirm)
+        self.present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    func secondPage(_ secondPage: SecondPage, didSelectData data: String) {
+        self.alertMsg(errMsg: data)
     }
     
     
